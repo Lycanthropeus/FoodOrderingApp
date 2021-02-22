@@ -41,13 +41,26 @@ router.post('/',async(req,res)=>{
     }
 });
 
-router.delete('/:postId',async(req,res)=>{
+router.delete('/:orderId',async(req,res)=>{
     try {
-      var status  = await Order.remove({_id: req.params.postId});
+      var status  = await Order.remove({_id: req.params.orderId});
       res.json({"Successful deletion" : status});
     } 
     catch(err){
       res.json({"Post does not exist/May have already been deleted": err});
+    }
+});
+
+router.patch('/:orderId',async(req,res)=>{
+    try{
+        const updatedPost = await Order.updateOne(
+            {_id : req.params.orderId},
+            {$set : {FoodOrder : req.body.FoodOrder}}
+        );
+        res.json(updatedPost);
+    }
+    catch(err){
+        res.json({"Could not update post" : err});
     }
 });
 

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
-/*
+
 var OrderSchema = new schema({
     
     OrderedBy : {
@@ -13,12 +13,12 @@ var OrderSchema = new schema({
         items: String,
         "maxItems" : 4
     },
-});
-*/
 
-var OrderSchema = new schema({
-    "bsonType" : "array",
-    "items" : "string"
+    CreatedAt : {
+        type : Date,
+        default : new Date
+    }
 });
+
 
 module.exports = mongoose.model('something',OrderSchema);
