@@ -17,6 +17,11 @@ var OrderSchema = new schema({
     CreatedAt : {
         type : Date,
         default : new Date
+    },
+
+    PaymentStatus : {
+        type : Boolean,
+        //default: false
     }
 });
 
